@@ -9,6 +9,6 @@ native-image -cp target/classes -o hw com.rabbit.examples.HelloWorld
 echo [3/$TS] Preparing the UPX for compression
 brew install upx
 echo [4/$TS] Compressing the binary
-/usr/bin/upx --lzma --best hw -o hw.upx
+/opt/homebrew/bin/upx --lzma --best hw -o hw.upx
 # echo [5/$TS] Building the docker image
 # docker build . -t hw:upx
