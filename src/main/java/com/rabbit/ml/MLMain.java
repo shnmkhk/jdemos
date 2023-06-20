@@ -1,4 +1,4 @@
-package com.rabbit.examples;
+package com.rabbit.ml;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -13,7 +13,7 @@ import org.jline.reader.impl.DefaultParser;
 import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
 
-public class MovielandMain {
+public class MLMain {
 	public static String read(String fileName) {
 
 		Path path;
@@ -44,39 +44,19 @@ public class MovielandMain {
 
 		while (true) {
 			String line = reader.readLine("> ");
-			if (line == null || line.equalsIgnoreCase("exit")) {
+			if (line == null || line.trim().equalsIgnoreCase("exit")) {
 				break;
 			}
 			line = line.trim();
 			reader.getHistory().add(line);
 
 			if (line.equalsIgnoreCase("describe")) {
-				Path path = Paths.get(".");
-				System.out.println(getDirectoryHierarchy(path));
+				System.out.println("TBD describe");
 			} else if (line.equalsIgnoreCase("create")) {
-				System.out.println("TBD");
+				System.out.println("TBD create");
 			} else {
 				System.out.println("Unknown command: " + line);
 			}
 		}
-	}
-
-	public static String getDirectoryHierarchy(Path path) {
-		StringBuilder sb = new StringBuilder();
-		try (Stream<Path> paths = Files.walk(path)) {
-			paths.sorted().forEach(p -> {
-				int depth = path.relativize(p).getNameCount();
-				for (int i = 0; i < depth; i++) {
-					sb.append(" ");
-				}
-				if (p.toFile().isDirectory()) {
-					sb.append("/");
-				}
-				sb.append(p.getFileName()).append("\n");
-			});
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return sb.toString();
 	}
 }
