@@ -25,3 +25,5 @@ replay_pid*
 /bin/
 /target/
 /out/
+jdemos
+jdemos.build_artifacts.txt
