@@ -29,7 +29,7 @@ public class MLMain {
 		} catch (URISyntaxException | IOException e) {
 			throw new RuntimeException(e);
 		}
-
+ 
 		lines.forEach(line -> data.append(line).append(System.lineSeparator()));
 		lines.close();
 		return data.toString();
